@@ -1,0 +1,15 @@
+{
+  "name": "adh",
+  "version": "1.0.1",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "adh": "index.js"
+  },
+  "author": "Oscar Galindo <oscar.galindo@apiumtech.com>",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "commander": "^2.9.0"
+  }
+}

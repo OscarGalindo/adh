@@ -1,0 +1,22 @@
+[
+  {
+    "cli": "remove-containers",
+    "cmd": "docker rm -f $(docker ps -a -q)",
+    "description": "Remove all containers"
+  },
+  {
+    "cli": "remove-images",
+    "cmd": "docker rmi -f $(docker images -q)",
+    "description": "Remove all images"
+  },
+  {
+    "cli": "remove-volumes",
+    "cmd": "docker volume rm $(docker volume ls -qf dangling=true)",
+    "description": "Remove all named volumes"
+  },
+  {
+    "cli": "create-local-registry",
+    "cmd": "docker run -d -p 5000:5000 --restart=always --name local-registry registry:2",
+    "description": "Create a local registry"
+  }
+]
