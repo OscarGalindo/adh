@@ -10,6 +10,11 @@
     "description": "Remove all images"
   },
   {
+    "cli": "kill-containers",
+    "cmd": "docker ps -aq | awk '{print $1} | docker kill'",
+    "description": "Kill all containers"
+  },
+  {
     "cli": "remove-volumes",
     "cmd": "docker volume rm $(docker volume ls -qf dangling=true)",
     "description": "Remove all named volumes"
