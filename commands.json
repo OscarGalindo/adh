@@ -1,7 +1,7 @@
 [
   {
     "cli": "remove-containers",
-    "cmd": "docker rm -f $(docker ps -a -q)",
+    "cmd": "docker ps -aq | awk '{print $1} | docker rm -f'",
     "description": "Remove all containers"
   },
   {
