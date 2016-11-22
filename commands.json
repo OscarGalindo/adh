@@ -10,14 +10,24 @@
     "description": "Remove all images"
   },
   {
-    "cli": "kill-containers",
-    "cmd": "docker ps -aq | awk '{print $1} | docker kill'",
-    "description": "Kill all containers"
+    "cli": "remove-none-images",
+    "cmd": "docker images | grep \"^<none>\" | awk '{print $3}' | xargs -I {} --no-run-if-empty docker rmi {} || true",
+    "description": "Remove none images"
+  },
+  {
+    "cli": "remove-exited-containers",
+    "cmd": "docker rm $(docker ps -q -f status=exited)",
+    "description": "Remove exited containers"
   },
   {
     "cli": "remove-volumes",
     "cmd": "docker volume rm $(docker volume ls -qf dangling=true)",
     "description": "Remove all named volumes"
+  },
+  {
+    "cli": "kill-containers",
+    "cmd": "docker ps -aq | awk '{print $1} | docker kill'",
+    "description": "Kill all containers"
   },
   {
     "cli": "create-local-registry",
