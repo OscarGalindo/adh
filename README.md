@@ -1,5 +1,6 @@
+# ADH: Docker 'UserfulCommands' Helper
 
-  Usage: adh [options] [command]
+##  Usage: adh [options] [command]
 
 
   Commands:
@@ -19,3 +20,20 @@
     -h, --help     output usage information
     -V, --version  output the version number
 
+---
+
+####  Usage: nginx [options]
+
+  Run nginx with a volume in the current directory 
+
+  Options:
+
+    -h, --help         output usage information
+    -f, --force        Force remove nginx container with same name
+    -p, --port <port>  Host port
+    -n, --name <name>  Container name
+
+  Examples:
+
+    $ adh nginx -p 8080 -h myNginx -f
+    $ adh nginx -h myOtherNginx

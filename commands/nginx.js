@@ -23,11 +23,12 @@ module.exports = function (program, evalAction, chalk) {
             }
 
             evalAction({cmd: commands.join('&&')});
-        }).on('--help', function() {
-        console.log('  Examples:');
-        console.log();
-        console.log('    $ adh nginx -p 8080 -h myNginx -f');
-        console.log('    $ adh nginx -h myOtherNginx');
-        console.log();
-    });;
+        })
+        .on('--help', function () {
+            console.log('  Examples:');
+            console.log();
+            console.log('    $ adh nginx -p 8080 -h myNginx -f');
+            console.log('    $ adh nginx -h myOtherNginx');
+            console.log();
+        });
 };
