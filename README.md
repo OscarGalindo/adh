@@ -4,6 +4,7 @@
 
   Commands:
 
+    nginx [options]            Run nginx with a volume in the current directory 
     ps                         Formatted ps -> docker ps --format 'table {{.ID}}	{{.Names}}	{{.Image}}	{{.Status}}	{{.Ports}}'
     remove-containers          Remove all containers -> docker ps -aq | awk '{print $1} | xargs docker rm -f'
     remove-images              Remove all images -> docker rmi -f $(docker images -q)

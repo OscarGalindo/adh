@@ -1,31 +1,28 @@
 #!/usr/bin/env node
 'use strict';
 const program = require('commander');
-const exec = require('child_process').exec;
 const chalk = require("chalk");
+const action = require('./action');
 const pkg = require('./package.json');
-const commands = require('./commands.json');
+const simpleCommands = require('./commands.json');
+const complexCommands = require('./commands/index.js')(program, action.stdExec, chalk);
 
 program
     .version(pkg.version);
 
-commands.forEach(command => {
+simpleCommands.forEach(command => {
     program
         .command(command.cli)
-        .description(chalk.blue(command.description) + chalk.black(' -> ') + chalk.gray(command.cmd))
-        .action(evalAction.bind(null, {cmd: command.cmd, color: typeof command.color === 'undefined' ? true : command.color}))
+        .description(chalk.yellow(command.description) + chalk.white(' -> ') + chalk.cyan(command.cmd))
+        .action(action.stdExec.bind(null, {
+            cmd: command.cmd,
+            color: typeof command.color === 'undefined' ? true : command.color
+        }))
+});
+
+program.on('*', function () {
+    console.log('Unknown Command: ' + program.args.join(' '));
+    program.help();
 });
 
 program.parse(process.argv);
-
-if (program.args.length === 0) program.help();
-
-function evalAction(action) {
-    let execCallback = (error, stdout, stderr) => {
-        if (error) console.log(chalk.red("exec error: " + error));
-        if (stdout) console.log(action.color ? chalk.green(stdout) : stdout);
-        if (stderr) console.log(chalk.red(stderr));
-    };
-
-    exec(action.cmd, execCallback);
-}
