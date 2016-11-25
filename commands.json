@@ -1,5 +1,11 @@
 [
   {
+    "cli": "ps",
+    "cmd": "docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}'",
+    "description": "Formatted ps",
+    "color": false
+  },
+  {
     "cli": "remove-containers",
     "cmd": "docker ps -aq | awk '{print $1} | xargs docker rm -f'",
     "description": "Remove all containers"
