@@ -7,7 +7,7 @@
   },
   {
     "cli": "remove-containers",
-    "cmd": "docker ps -aq | awk '{print $1} | xargs docker rm -f'",
+    "cmd": "docker ps -aq | awk '{print $1}' | xargs docker rm -f'",
     "description": "Remove all containers"
   },
   {
