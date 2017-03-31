@@ -34,7 +34,7 @@
   },
   {
     "cli": "remove-exited-containers",
-    "cmd": "docker rm $(docker ps -q -f status=exited)",
+    "cmd": "docker ps -q -f status=exited | xargs -I {} --no-run-if-empty docker rm {} || true",
     "description": "Remove exited containers"
   },
   {
