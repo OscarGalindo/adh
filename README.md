@@ -8,7 +8,6 @@
     nginx [options]            Run nginx with a volume in the current directory 
     ps                         Formatted ps -> docker ps --format 'table {{.ID}}	{{.Names}}	{{.Image}}	{{.Status}}	{{.Ports}}'
     ps-a                       Formatted ps-a showing all containers (default shows just running)
-    ps:watch                   Continuous update of ps
     remove-containers          Remove all containers -> docker ps -aq | awk '{print $1} | xargs docker rm -f'
     remove-images              Remove all images -> docker rmi -f $(docker images -q)
     remove-none-images         Remove none images -> docker images | grep "^<none>" | awk '{print $3}' | xargs -I {} --no-run-if-empty docker rmi {} || true
