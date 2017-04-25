@@ -6,18 +6,18 @@
     "color": false
   },
   {
-    "cli": "ps-a",
+    "cli": ["ps-a", "psa"],
     "cmd": "docker ps -a --format 'table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}'",
     "description": "Formatted ps for all dockers",
     "color": false
   },
   {
-    "cli": "remove-containers",
+    "cli": ["remove-containers", "rc"],
     "cmd": "docker ps -aq | awk '{print $1}' | xargs docker rm -f",
     "description": "Remove all containers"
   },
   {
-    "cli": "remove-images",
+    "cli": ["remove-images", "ri"],
     "cmd": "docker rmi -f $(docker images -q)",
     "description": "Remove all images"
   },
@@ -37,7 +37,7 @@
     "description": "Remove all named volumes"
   },
   {
-    "cli": "kill-containers",
+    "cli": ["kill-containers", "kc"],
     "cmd": "docker kill $(docker ps -q)",
     "description": "Kill all containers"
   },
