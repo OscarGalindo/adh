@@ -44,7 +44,7 @@
   },
   {
     "cli": "kill-containers",
-    "cmd": "docker ps -aq | awk '{print $1} | docker kill'",
+    "cmd": "docker kill $(docker ps -q)",
     "description": "Kill all containers"
   },
   {
