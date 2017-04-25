@@ -2,19 +2,13 @@
   {
     "cli": "ps",
     "cmd": "docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}'",
-    "description": "Formatted ps",
+    "description": "Formatted ps for running dockers",
     "color": false
   },
   {
     "cli": "ps-a",
     "cmd": "docker ps -a --format 'table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}'",
-    "description": "Formatted ps",
-    "color": false
-  },
-  {
-    "cli": "ps:watch",
-    "cmd": "watch -n1 \"docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}'\"",
-    "description": "Watching formatted ps",
+    "description": "Formatted ps for all dockers",
     "color": false
   },
   {
