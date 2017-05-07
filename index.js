@@ -6,7 +6,7 @@ const action = require('./action');
 const pkg = require('./package.json');
 const simpleCommands = require('./commands.json');
 const complexCommands = require('./commands/index.js')(program, action.stdExec, chalk);
-var R = require('ramda');
+const R = require('ramda');
 
 program.version(pkg.version);
 
@@ -20,7 +20,7 @@ simpleCommands.forEach(command => {
                 color: typeof command.color === 'undefined' ? true : command.color
             }))
     })
-})
+});
 
 program.on('*', function () {
     console.log('Unknown Command: ' + program.args.join(' '));
