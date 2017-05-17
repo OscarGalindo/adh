@@ -36,7 +36,7 @@ $ adh --help
 ```
 
 
-###  adh nginx [options]
+##  adh nginx [options]
 
   Run nginx with a volume in the current directory 
 
@@ -52,9 +52,9 @@ $ adh --help
     $ adh nginx -p 8080 -n myNginx -f
     $ adh nginx -n myOtherNginx
 
-###  adh stop [options]
+##  adh stop [options]
 
-<img src="adh_stop.gif" width="688">
+<img src="adh_stop.gif" width="500">
 
   Stop containers
 
