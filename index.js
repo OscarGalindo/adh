@@ -11,20 +11,19 @@ const R = require('ramda');
 program.version(pkg.version);
 
 simpleCommands.forEach(command => {
-    R.uniq(R.flatten([command.cli])).forEach(cli => {
-        program
-            .command(cli)
-            .description(chalk.yellow(command.description) + chalk.white(' -> ') + chalk.cyan(command.cmd))
-            .action(action.stdExec.bind(null, {
-                cmd: command.cmd,
-                color: typeof command.color === 'undefined' ? true : command.color
-            }))
-    })
+  program
+    .command(command.cli)
+    .alias(command.alias)
+    .description(chalk.yellow(command.description) + chalk.white(' -> ') + chalk.cyan(command.cmd))
+    .action(action.stdExec.bind(null, {
+      cmd: command.cmd,
+      color: typeof command.color === 'undefined' ? true : command.color
+    }))
 });
 
 program.on('*', function () {
-    console.log('Unknown Command: ' + program.args.join(' '));
-    program.help();
+  console.log('Unknown Command: ' + program.args.join(' '));
+  program.help();
 });
 
 program.parse(process.argv);
