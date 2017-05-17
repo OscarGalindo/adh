@@ -10,7 +10,8 @@ module.exports = function (program, evalAction, chalk) {
   program
     .command('stop')
     .description(chalk.yellow("Stop containers"))
-    .action(() => {
+    .option('-a, --all', 'Stop all containers')
+    .action((options) => {
       listContainers()
         .map(R.map(y => ({name: y.Names[0], value: y})))
         .subscribe(containers => {
@@ -19,25 +20,37 @@ module.exports = function (program, evalAction, chalk) {
             return;
           }
 
-          const tasks = [
-            {
-              type: 'checkbox',
-              name: 'container',
-              message: 'Select container/s to stop',
-              choices: containers
-            },
-          ];
-          inquirer.prompt(tasks)
-            .then(containers => {
-              const cntrs = containers.container
-                .map(ctr => ({
-                    title: 'Stopping ' + ctr.Names[0],
-                    task: () => stopContainer(container(ctr.Id))
-                  })
-                );
+          let cntrs = [];
 
-              new Listr(cntrs, {concurrent: true}).run();
-            });
+          if (options.all) {
+            cntrs = containers
+              .map(ctr => ({
+                  title: 'Stopping ' + ctr.value.Names[0],
+                  task: () => stopContainer(container(ctr.value.Id))
+                })
+              );
+          } else {
+            const tasks = [
+              {
+                type: 'checkbox',
+                name: 'container',
+                message: 'Select container/s to stop',
+                choices: containers
+              },
+            ];
+            inquirer.prompt(tasks)
+              .then(selectedContainers => {
+                cntrs = selectedContainers
+                  .container
+                  .map(ctr => ({
+                      title: 'Stopping ' + ctr.Names[0],
+                      task: () => stopContainer(container(ctr.Id))
+                    })
+                  );
+
+              });
+          }
+          new Listr(cntrs, {concurrent: true}).run();
         });
     });
 };
