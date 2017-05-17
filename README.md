@@ -3,14 +3,17 @@
 
 ##  Description
 
-    This package will help you working with Docker. 
+> This package will help you working with Docker. 
     
-   
+
 ##  Installation
 
     npm install -g adh
   
-## Usage: adh [options] [command]
+## Usage
+
+```
+$ adh --help
 
   Commands:
 
@@ -30,11 +33,10 @@
 
     -h, --help     output usage information
     -V, --version  output the version number
+```
 
----
 
-
-####  Usage: nginx [options]
+###  adh nginx [options]
 
   Run nginx with a volume in the current directory 
 
@@ -49,3 +51,14 @@
 
     $ adh nginx -p 8080 -n myNginx -f
     $ adh nginx -n myOtherNginx
+
+###  adh stop [options]
+
+<img src="adh_stop.gif" width="688">
+
+  Stop containers
+
+  Options:
+
+    -h, --help  output usage information
+    -a, --all  Stop all containers
