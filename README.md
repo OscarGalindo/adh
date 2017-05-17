@@ -54,11 +54,11 @@ $ adh --help
 
 ##  adh stop [options]
 
-<img src="adh_stop.gif" width="500">
-
   Stop containers
 
   Options:
 
     -h, --help  output usage information
     -a, --all  Stop all containers
+
+<img src="adh_stop.gif" width="500">
