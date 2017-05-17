@@ -26,4 +26,8 @@ program.on('*', function () {
   program.help();
 });
 
+program.on('help', function () {
+  program.help();
+});
+
 program.parse(process.argv);
