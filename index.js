@@ -14,7 +14,7 @@ simpleCommands.forEach(command => {
   program
     .command(command.cli)
     .alias(command.alias)
-    .description(chalk.yellow(command.description) + chalk.white(' -> ') + chalk.cyan(command.cmd))
+    .description(chalk.yellow(command.description))
     .action(action.stdExec.bind(null, {
       cmd: command.cmd,
       color: typeof command.color === 'undefined' ? true : command.color
