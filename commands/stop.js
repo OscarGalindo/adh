@@ -23,12 +23,13 @@ module.exports = function (program, evalAction, chalk) {
           let cntrs = [];
 
           if (options.all) {
-            cntrs = containers
+            const containersToStop = containers
               .map(ctr => ({
                   title: 'Stopping ' + ctr.value.Names[0],
                   task: () => stopContainer(container(ctr.value.Id))
                 })
               );
+            new Listr(containersToStop, {concurrent: true}).run();
           } else {
             const tasks = [
               {
@@ -40,17 +41,16 @@ module.exports = function (program, evalAction, chalk) {
             ];
             inquirer.prompt(tasks)
               .then(selectedContainers => {
-                cntrs = selectedContainers
+                const containersToStop = selectedContainers
                   .container
                   .map(ctr => ({
                       title: 'Stopping ' + ctr.Names[0],
                       task: () => stopContainer(container(ctr.Id))
                     })
                   );
-
+                new Listr(containersToStop, {concurrent: true}).run();
               });
           }
-          new Listr(cntrs, {concurrent: true}).run();
         });
     });
 };
