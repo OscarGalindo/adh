@@ -17,17 +17,17 @@ $ adh --help
 
   Commands:
 
-    nginx [options]            Run nginx with a volume in the current directory 
-    stop [options]             Stop containers
-    ps                         Formatted ps for running dockers
-    ps-a|psa                   Formatted ps for all dockers
-    remove-containers|rc       Remove all containers
-    remove-images|ri           Remove all images
-    remove-none-images         Remove none images
-    remove-exited-containers   Remove exited containers
-    remove-volumes             Remove all named volumes
-    kill-containers|kc         Kill all containers
-    create-local-registry      Create a local registry
+    nginx [options]            			Run nginx with a volume in the current directory 
+    stop [options]             			Stop containers
+    ps                         			Formatted ps for running dockers
+    ps-a|psa                   			Formatted ps for all dockers
+    remove-containers|rc       			Remove all containers
+    remove-images|ri           			Remove all images
+    remove-none-images         			Remove none images
+    remove-exited-containers|rec   		Remove exited containers
+    remove-volumes             			Remove all named volumes
+    kill-containers|kc         			Kill all containers
+    create-local-registry|clr			Create a local registry
 
   Options:
 
