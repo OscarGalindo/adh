@@ -31,6 +31,7 @@
   },
   {
     "cli": "remove-exited-containers",
+    "alias": "rec",
     "cmd": "docker ps -q -f status=exited | xargs -I {} --no-run-if-empty docker rm {} || true",
     "description": "Remove exited containers"
   },
@@ -47,6 +48,7 @@
   },
   {
     "cli": "create-local-registry",
+    "alias": "clr",
     "cmd": "docker run -d -p 5000:5000 --restart=always --name local-registry registry:2",
     "description": "Create a local registry"
   }
