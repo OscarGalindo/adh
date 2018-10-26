@@ -17,6 +17,7 @@ $ adh --help
 
   Commands:
 
+    mongo                           Run mongo
     nginx [options]            			Run nginx with a volume in the current directory 
     stop [options]             			Stop containers
     ps                         			Formatted ps for running dockers
