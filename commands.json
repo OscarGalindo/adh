@@ -51,5 +51,10 @@
     "alias": "clr",
     "cmd": "docker run -d -p 5000:5000 --restart=always --name local-registry registry:2",
     "description": "Create a local registry"
+  },
+  {
+    "cli": "mongo",
+    "cmd": "docker rm -f adh-mongo || true && docker run --name adh-mongo --restart always -p 27017:27017 -d mongo || true",
+    "description": "Create a local mongo"
   }
 ]
